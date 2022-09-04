@@ -1,0 +1,128 @@
+//tested basic doubly ll
+//start
+class Main {
+	
+	int size;
+	Node head;
+	Node tail;
+	
+	 public  int getNode(Node llist, int positionFromTail) {
+    // Write your code here
+    int counter=1;
+    int desiredSize=0,totalSize=0;
+	int value=0;
+	Node llist1=llist;
+    if(llist1==null)
+        return 0;
+		//System.out.println("ll");
+    while(llist1!=null){
+       totalSize++;
+        llist1=llist1.next; 
+    }
+      
+    desiredSize=totalSize-positionFromTail;
+     //System.out.println("totalSize" +totalSize +"desiredSize" +desiredSize);
+    while(llist!=null){
+      // System.out.println("llist.val" +llist.val );
+       if(counter==desiredSize){
+		    value= llist.val;
+			break;
+	   }
+      
+       else{
+          counter++; 
+          llist=llist.next; 
+       }
+       
+    }
+      
+    return value;
+
+    }
+	
+	public void insertAfter(int val){
+		Node newNext,newPrev=null;
+		if(size==0){
+			 newNext= new Node(null,val,null) ;
+			this.head=newNext;
+			this.tail=newNext;
+			
+		}else{
+			 newNext= this.head;
+			while(newNext.next!=null){
+				
+				newNext=newNext.next;
+			}
+			
+			newPrev=newNext;
+			newNext.next=new Node(null,val,newPrev) ;
+			this.tail=newNext.next;
+		}
+		
+		size++;
+		
+	}
+	public void displayPrev(){
+		
+		Node tempPrev= this.tail;
+			while(tempPrev!=null ){
+				System.out.println("Val "+tempPrev.val);
+				tempPrev= tempPrev.prev;
+			}
+		
+	}
+	
+	public void displayForward(){
+		
+		Node newNext= this.head;
+			while(newNext!=null ){
+				System.out.println("Val "+newNext.val);
+				newNext= newNext.next;
+			}
+		
+	}
+	
+	
+	
+	private class Node{
+		
+		Node next;
+		int val;
+		Node prev;
+		
+		public void setNext(Node next){
+			this.next=next;
+		}
+		
+		
+		public void setPrev(Node prev){
+			this.prev=prev;
+		}
+		
+		public void setVal(int val){
+			this.val=val;
+		}
+		
+		public Node(Node next,int val,Node prev){
+			this.next=next;
+			this.val=val;
+			this.prev=prev;
+		}
+		
+	}
+	public static void main(String args[]) {
+		// Your code goes here
+		
+		Main dl= new Main();
+		dl.insertAfter(12);
+		dl.insertAfter(13);
+		dl.insertAfter(14);
+		dl.displayForward();
+		dl.displayPrev();
+		
+	 System.out.println("value" +	dl.getNode(dl.head,0));
+		
+		
+	}
+}
+// end
