@@ -1,1 +1,134 @@
 
+class Main {
+	
+	int size;
+	Node head;
+	Node tail;
+	
+	
+      
+    
+	
+	public void insertAfter(int val){
+		Node newNext=null;
+		if(size==0){
+			 newNext= new Node(null,val) ;
+			this.head=newNext;
+			this.tail=newNext;
+			
+		}else{
+			 newNext= this.head;
+			while(newNext.next!=null){
+				
+				newNext=newNext.next;
+			}
+			
+			newNext.next=new Node(null,val) ;
+			this.tail=newNext.next;
+		}
+		
+		size++;
+		
+	}
+	
+	public void displayForward(){
+		
+		Node newNext= this.head;
+			while(newNext!=null ){
+				System.out.println("Val "+newNext.val);
+				newNext= newNext.next;
+			}
+		
+	}
+	
+	
+	
+	private class Node{
+		
+		Node next;
+		int val;
+		
+		
+		public void setNext(Node next){
+			this.next=next;
+		}
+		
+		
+		
+		public void setVal(int val){
+			this.val=val;
+		}
+		
+		public Node(Node next,int val){
+			this.next=next;
+			this.val=val;
+			
+		}
+		
+	}
+	
+	public void reverse(Node node){
+ 
+	Node current=node;
+	Node prev=null;
+	
+	while(current!=null){
+		Node forward=current.next;
+		current.next=prev;
+		
+		if(prev==null){
+			prev=current;
+			this.tail=prev;
+		}else
+		prev=current;
+		
+		if(forward==null){
+			this.head=current;
+			current=forward;
+		}else
+		current=forward;
+		
+	}
+ 
+ 
+		
+		
+ }
+ 
+ public Node reverseRecursive(Node node){
+ 
+		//base case
+		if(node.next == null){
+			this.head=node;
+			
+			return node;
+		}
+		
+		
+		//recursive case
+		Node newNode = reverseRecursive(node.next);
+		newNode.next=node;
+		System.out.println(node.val);
+		return node;
+ }
+ 
+	public static void main(String args[]) {
+		// Your code goes here
+		
+		Main dl= new Main();
+		dl.insertAfter(12);
+		dl.insertAfter(13);
+		dl.insertAfter(14);
+		//dl.displayForward();
+		
+		
+		Node newNode = dl.reverseRecursive(dl.head);
+		newNode.next=null;
+		//dl.reverse(dl.head);
+		dl.displayForward();
+	 System.out.println("value");
+	 
+		
+		
+	}
+}
