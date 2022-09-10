@@ -42,6 +42,8 @@ SLL = Singly linked list
 	
 4. merge two sorted ll (merging ll is different from adding 3 ll into another or 4rth ll)
 5. check pallindrom in sll
+6. clone a ll
+7. merge sort in ll
 
 
           
