@@ -11,6 +11,9 @@
 2. passing null in permitive using ternary operator, will give nullpointer
      int data=0;
          data=orignalNode.arb !=null ?orignalNode.arb.data :null;
+3. In a programme we have to take 3 inputs from user using  Scanner sc= new Scanner(System.in);  int a= sc.nextInt(); then if we pass multiple inputs in console sperated by space then it will skip 2nd and 3rd input ask step .
+![image](https://user-images.githubusercontent.com/41359231/189638251-fe4614f8-edfd-4911-976d-a5326a49da66.png)
+
          
 
 **################################################## Linked list ################################################**
