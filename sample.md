@@ -1,1 +1,94 @@
+•	Earlier deployment scene and consequences
+in 1 server , 3 apps are present and one app is taking 98% CPU and RAM then other apps wouldn’t be able to  perform/run tasks. 
+
+•	Deployment using Virtualization and consequences
+To solve above problem, Virtualization is introduced. Now we take a big server let suppose 64 GB of Ram and do Virtualization on it like we run to virtual machine (we gave them equal resources like 25 GB RAM and the cpu cores) so that if load is coming one service then it won’t affect other service and load can be managed by load balancer
+
+consequences :- but in this if load coming to one service is very low means this service is not using its all resources then its kind of resource wastage
+![image](https://user-images.githubusercontent.com/41359231/196502760-a27ee544-e43d-4143-a28c-0eaf0d444f7f.png)
+
+ 
+
+
+
+•	Deployment using Containerization and consequences
+In this we can run multiple services in isolated environment using Containerization(docker ). This overcomes the consequences of like here we are not giving resources statically they are dynamic let suppose  one service can take 70% resources and other can take 20% and vice versa can be possible 
+consequences = lets suppose if one container gets down or dead then we have to spin/start other containers with same service replica
+
+ 
+![image](https://user-images.githubusercontent.com/41359231/196502916-00e9abde-89f3-4aea-abe8-62d4c76ba485.png)
+
+
+•	Container orchestration (Kubernetes – k8s)
+It overcomes only containers consequences basically used for managing containers or their life cycle
+	It is designed by google for high availability and scalability 
+	high availability = When the container(pod) will get terminated/stopped automatically due to some issue  then Kubernetes will start another container(pod) with same service automatically
+	high  scalability = we can configure the scaling of our apps.
+
+•	 Kubernetes Architecture = cluster (A Kubernetes cluster is made up of at least one master node and one or more worker nodes. The master node makes up the control plane of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster)
+>  cluster = Master Node  + Worker Node
+>  Worker Node = Pods (it is a smallest unit of deployable components and contains container (docker)) + Kubelet agent  (every changes in worker node done by this agent )
+> Master nodes = In a Kubernetes cluster, the control plane nodes (also known as the master nodes) run services that are required to control the Kubernetes cluster.
+https://kubernetes.io/docs/concepts/overview/components/
+Master node or control plane consists of :-
+   1. Api server (kube-apiserve) – interface that we can use to make service deploy on container or to to do different stuff
+   2. etcd – all the configuration stored here (preserve the state of k8s cluster)
+   3. controller-manager (kube-controller-manager) - 
+ ![image](https://user-images.githubusercontent.com/41359231/196502999-36dbcb1c-c52a-4ce6-a494-1bdabbd94a64.png)
+
+
+   4. scheduler  (kube-scheduler) - Control plane component that watches for newly created Pods with no assigned node, and selects a node for them to run on.
+
+	Each Pods have Ip assigned by k8s, each pod has service(svc) in k8s that svc has static endpoints for every pod , all the other app services(like java apps that we deployed into pods ) excess each other using this endpoints. (these static endpoints are helpful when one pod goes down then other got created by k8s and new Ip assigned to it  but becoz of service we don’t have to worry coz we are still accessing the endpoints of svc not ip of pods).
+lifecycle of svc and pods are independent means when pods get destroyed this doesn’t mean svc also get destroyed .
+SVC also act as load balancer 
+	Svc types – external for applications and internal for dbs
+Service & endpoint relation – when we request for service creation, k8s will create endpoint objects same as of service to keep track of pods/members of service with the help of this endpoints we can excess the pods (endpoints are also URLs).
+	Ingress – this is responsible for redirecting outer world request to the svc’s
+	Config map- java app in a pod connect to mssql db of another pod if we want to connect to oracle db or to same db with different connection components like connection string/url, username , password then config in java app need to be change and java app need to be compile again to resolve this we have Config map
+	Secrets – to store private infos
+	Volumes (can be on local or cloud) -  to resolve the problem “when db pod get deleted and our data get lost”
+	Deploy or deployments – to make replica of worker nodes lets suppose one svc connected to two pods of different worker node and one pod of 1st worker node gets down then the user remain intact becoz replica will handle it
+how we want to upscale/ down scale we can mention this in this component
+	Statefulset – dbs are preferred to be handled using this component instead od deployment component coz deployment create replica the db data synchronization is another hectic task to avoid this Statefulset are there or it is preferred to have db outside your k8s cluster
+
+•	On Production we generally keep more than one master node for backup if one goes down then other will manage the stuff
+•	Master nodes are connected with worker nodes using virtual network
+•	Ingress, service, pods each one have there separate config yaml file
+•	Order of pods can be managed by init containers
+
+Kubernetes Services 
+•	NodePort -     The NodePort Service type is an extension of the ClusterIP Service type. So internal clients have two ways to call the Service:
+
+Use clusterIP and port.
+Use a node's IP address and nodePort
+
+Microservice Deployment using Kubernetes
+
+•	Daily code buffer video checked.
+•	Here we have to create deployment and service for each application
+
+Kubernetes Installation on local
+
+•	For windows - Chocolaty, minikube, kubectl
+
+•	By default minikube uses docker but we can also user hyperv
+
+•	Minikube creates a single node cluster and kubectl is a CLI tool to manage the cluster
+
+•	Kubernetes vs  docker swarm
+Kubernetes – dashboard, autoscaling, complex structure with more no. of functionalities and high learning curve.
+docker swarm – depends on third party tools for dashboard, autoscaling is not there we have to mange manually, easy structure with less no. of functionalities and low learning curve
+
+Kubernets Commands and word play
+
+•	Command & args:
+ 
+![image](https://user-images.githubusercontent.com/41359231/196503050-add69309-b5dc-4b7f-9d4b-ee5c30289821.png)
+
+https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/
+
+
+
+
 
