@@ -84,7 +84,7 @@ Kubernets Commands and word play
 •	Command & args:
  
 
-![image](https://user-images.githubusercontent.com/41359231/206920844-8539fa6b-efc8-4ea7-b171-8c1eb1eb255d.png)
+
 
 
 ![image](https://user-images.githubusercontent.com/41359231/206920748-a8fdfb60-fda4-4c34-972f-31e41ec0c918.png)
@@ -96,8 +96,12 @@ https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument
 ![image](https://user-images.githubusercontent.com/41359231/206920723-c8d67631-577e-4e2c-84e7-f0a8621ee5c4.png)
 
 
-![image](https://user-images.githubusercontent.com/41359231/206920691-e4a941a5-7e77-40ff-9ac0-cf8b7455e74b.png)
 
 
 ![image](https://user-images.githubusercontent.com/41359231/206920649-5d251ef0-d931-405d-a6a8-4ebfb1e57e31.png)
+
+
+![image](https://user-images.githubusercontent.com/41359231/206920691-e4a941a5-7e77-40ff-9ac0-cf8b7455e74b.png)
+
+![image](https://user-images.githubusercontent.com/41359231/206920844-8539fa6b-efc8-4ea7-b171-8c1eb1eb255d.png)
 
