@@ -105,3 +105,6 @@ https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument
 
 ![image](https://user-images.githubusercontent.com/41359231/206920844-8539fa6b-efc8-4ea7-b171-8c1eb1eb255d.png)
 
+![image](https://user-images.githubusercontent.com/41359231/206921207-02625c01-565c-40e2-a0a6-8d1c9450de48.png)
+
+
